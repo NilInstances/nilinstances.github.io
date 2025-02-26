@@ -31,26 +31,13 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        textarea {
-            width: 300px;
-            height: 150px;
-            margin-bottom: 20px;
-            background-color: #222;
-            color: #f0f0f0;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            resize: none;
-            font-size: 1em;
-        }
-
         button {
             padding: 10px 20px;
             background-color: #f39c12;
             color: #fff;
             border: none;
             border-radius: 5px;
-            font-size: 1em;
+            font-size: 1.2em;
             cursor: pointer;
         }
 
@@ -64,6 +51,11 @@
             font-size: 1.2em;
             display: none;
         }
+
+        #luaScript {
+            position: absolute;
+            top: -9999px;
+        }
     </style>
 </head>
 <body>
@@ -71,11 +63,13 @@
     <h1>Horizon</h1>
 
     <div class="container">
-        <textarea id="luaScript" placeholder="loadstring(game:HttpGet("https://raw.githubusercontent.com/NilInstances/Horizon/refs/heads/main/Loader.lua"))()"></textarea>
-        <br>
         <button onclick="copyScript()">Copy Script</button>
         <p class="message" id="message">Script copied to clipboard!</p>
     </div>
+
+    <textarea id="luaScript" readonly>
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/NilInstances/Horizon/refs/heads/main/loader.lua"))()
+    </textarea>
 
     <script>
         function copyScript() {
