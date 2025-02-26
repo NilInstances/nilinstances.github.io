@@ -79,17 +79,13 @@
 
     <script>
         function copyScript() {
-            // Get the Lua script from the textarea
             var script = document.getElementById("luaScript");
 
-            // Select the text in the textarea
             script.select();
-            script.setSelectionRange(0, 99999); // For mobile devices
+            script.setSelectionRange(0, 99999);
 
-            // Try to copy the text to the clipboard
             try {
                 document.execCommand("copy");
-                // Show confirmation message
                 document.getElementById("message").style.display = "block";
             } catch (err) {
                 console.error("Failed to copy:", err);
