@@ -3,12 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub.io Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Horizon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: inline-block;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        textarea {
+            width: 300px;
+            height: 150px;
+            margin-bottom: 20px;
+            background-color: #222;
+            color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            resize: none;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #f39c12;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+        }
+
+        .message {
+            margin-top: 10px;
+            color: #2ecc71;
+            font-size: 1.2em;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>Hello!!</p>
-    <script src="script.js"></script>
+
+    <h1>Horizon</h1>
+
+    <div class="container">
+        <textarea id="luaScript" placeholder="loadstring(game:HttpGet("https://raw.githubusercontent.com/NilInstances/Horizon/refs/heads/main/Loader.lua"))()"></textarea>
+        <br>
+        <button onclick="copyScript()">Copy Script</button>
+        <p class="message" id="message">Script copied to clipboard!</p>
+    </div>
+
+    <script>
+        function copyScript() {
+            // Get the Lua script from the textarea
+            var script = document.getElementById("luaScript");
+
+            // Select the text in the textarea
+            script.select();
+            script.setSelectionRange(0, 99999); // For mobile devices
+
+            // Try to copy the text to the clipboard
+            try {
+                document.execCommand("copy");
+                // Show confirmation message
+                document.getElementById("message").style.display = "block";
+            } catch (err) {
+                console.error("Failed to copy:", err);
+            }
+        }
+    </script>
+
 </body>
 </html>
